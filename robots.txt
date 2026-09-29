@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://babo-ddev.onrender.com/sitemap.xml
+Sitemap: https://danielbabo2307-cyber.github.io/babo-ddev/sitemap.xml
