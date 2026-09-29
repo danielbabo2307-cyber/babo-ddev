@@ -1,0 +1,4660 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    
+    <link rel="shortcut icon" href="./image-removebg-preview.png" type="image/x-icon">
+
+    <meta
+        name="description"
+        content="BABO DDev — Développeur Full-Stack à Abidjan. Création de sites web, applications modernes, APIs et solutions digitales."
+    >
+
+    <meta
+        name="theme-color"
+        content="#090D16"
+    >
+
+    <title>BABO DDev | Développeur Web</title>
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================================================
+         MATERIAL SYMBOLS
+    ========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200"
+    >
+
+    <!-- =========================================================
+         TAILWIND CDN
+    ========================================================== -->
+
+  <link rel="stylesheet" href="./output.css">
+
+   
+
+    <!-- =========================================================
+         CUSTOM CSS
+    ========================================================== -->
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+
+            --deep-canvas: #090D16;
+            --surface-base: #0D111D;
+            --card-base: #111827;
+
+            --cobalt: #3B82F6;
+            --cyan: #00E5FF;
+            --light-cobalt: #60A5FA;
+
+            --high-text: #F8FAFC;
+            --secondary-text: #94A3B8;
+            --muted: #64748B;
+
+            --glass-panel: rgba(13, 17, 29, 0.65);
+            --glass-card: rgba(17, 24, 39, 0.75);
+
+            --border-blue: rgba(59, 130, 246, 0.15);
+            --border-cyan: rgba(0, 229, 255, 0.12);
+
+            --shadow-card:
+                0 12px 32px -8px rgba(0, 0, 0, 0.5);
+
+            --shadow-modal:
+                0 24px 48px -12px rgba(0, 0, 0, 0.7);
+        }
+
+
+        /* =====================================================
+           BASE
+        ====================================================== */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(59, 130, 246, 0.08),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(0, 229, 255, 0.06),
+                    transparent 25%
+                ),
+                #090D16 !important;
+
+            color: var(--high-text);
+
+            font-family:
+                "Plus Jakarta Sans",
+                sans-serif;
+        }
+
+
+        ::selection {
+
+            background: rgba(0, 229, 255, 0.25);
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           TECH GRID
+        ====================================================== */
+
+        .site-grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            opacity: 0.9;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(59, 130, 246, 0.04) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(59, 130, 246, 0.04) 1px,
+                    transparent 1px
+                );
+
+            background-size: 48px 48px;
+
+            animation:
+                gridMove 24s linear infinite;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    rgba(0,0,0,0.55)
+                );
+        }
+
+
+        @keyframes gridMove {
+
+            0% {
+                background-position:
+                    0 0,
+                    0 0;
+            }
+
+            100% {
+                background-position:
+                    48px 48px,
+                    48px 48px;
+            }
+        }
+
+
+        /* =====================================================
+           AMBIENT ORBS
+        ====================================================== */
+
+        .ambient-orb {
+
+            position: absolute;
+
+            border-radius: 9999px;
+
+            pointer-events: none;
+
+            filter: blur(80px);
+
+            opacity: 0.4;
+
+            animation:
+                orbFloat 10s ease-in-out infinite;
+        }
+
+
+        .orb-blue {
+
+            background: #2563EB;
+        }
+
+
+        .orb-cyan {
+
+            background: #00E5FF;
+        }
+
+
+        .orb-purple {
+
+            background: #6366F1;
+        }
+
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+            }
+
+            50% {
+
+                transform:
+                    translate3d(20px, -25px, 0)
+                    scale(1.08);
+            }
+        }
+
+
+        /* =====================================================
+           GLASS
+        ====================================================== */
+
+        .glass-panel {
+
+            background:
+                rgba(13, 17, 29, 0.65);
+
+            border:
+                1px solid rgba(59, 130, 246, 0.12);
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+        }
+
+
+        .glass-card {
+
+            background:
+                rgba(17, 24, 39, 0.75);
+
+            border:
+                1px solid rgba(59, 130, 246, 0.18);
+
+            backdrop-filter:
+                blur(16px);
+
+            -webkit-backdrop-filter:
+                blur(16px);
+
+            box-shadow:
+                0 12px 32px -8px rgba(0, 0, 0, 0.5);
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+        }
+
+
+        .glass-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(0, 229, 255, 0.38);
+
+            box-shadow:
+                0 18px 42px -12px rgba(0, 0, 0, 0.65),
+                0 0 25px rgba(0, 229, 255, 0.08);
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ====================================================== */
+
+        header {
+
+            background:
+                rgba(9, 13, 22, 0.72) !important;
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            border-bottom:
+                1px solid rgba(59, 130, 246, 0.12);
+        }
+
+
+        /* FORCE DESKTOP NAVBAR */
+
+        @media (min-width: 1024px) {
+
+            header nav {
+
+                display: flex !important;
+
+                align-items: center;
+
+                visibility: visible !important;
+
+                opacity: 1 !important;
+            }
+
+
+            header nav a {
+
+                display: inline-flex !important;
+
+                align-items: center;
+
+                visibility: visible !important;
+
+                opacity: 1 !important;
+
+                white-space: nowrap;
+            }
+        }
+
+
+        .nav-link {
+
+            position: relative;
+
+            transition:
+                color 0.3s ease;
+        }
+
+
+        .nav-link::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -8px;
+
+            width: 0;
+
+            height: 2px;
+
+            border-radius: 999px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #3B82F6,
+                    #00E5FF
+                );
+
+            box-shadow:
+                0 0 10px rgba(0, 229, 255, 0.5);
+
+            transition:
+                width 0.3s ease;
+        }
+
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+
+            width: 100%;
+        }
+
+
+        .nav-link.active {
+
+            color: #60A5FA !important;
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        #mobile-menu {
+
+            max-height: 0;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            overflow: hidden;
+
+            transform:
+                translateY(-12px);
+
+            transition:
+
+                max-height 0.45s ease,
+
+                opacity 0.3s ease,
+
+                transform 0.4s ease,
+
+                visibility 0.4s ease;
+        }
+
+
+        #mobile-menu.menu-open {
+
+            max-height: 700px;
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+
+        #mobile-menu a {
+
+            display: flex;
+
+            align-items: center;
+
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border-radius: 8px;
+
+            color: #c2c6d6;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        #mobile-menu a:hover {
+
+            color: #ffffff;
+
+            background:
+                rgba(59, 130, 246, 0.1);
+
+            transform:
+                translateX(4px);
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ====================================================== */
+
+        .glow-button {
+
+            position: relative;
+
+            overflow: hidden;
+
+            isolation: isolate;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .glow-button::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: -120%;
+
+            width: 80%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    100deg,
+                    transparent,
+                    rgba(255,255,255,0.35),
+                    transparent
+                );
+
+            transform:
+                skewX(-20deg);
+
+            transition:
+                left 0.7s ease;
+
+            z-index: -1;
+        }
+
+
+        .glow-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 0 20px rgba(0, 229, 255, 0.35);
+        }
+
+
+        .glow-button:hover::before {
+
+            left: 130%;
+        }
+
+
+        .secondary-button {
+
+            background:
+                rgba(17, 24, 39, 0.6);
+
+            border:
+                1px solid rgba(59, 130, 246, 0.25);
+
+            backdrop-filter:
+                blur(10px);
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        .secondary-button:hover {
+
+            border-color:
+                rgba(0, 229, 255, 0.4);
+
+            background:
+                rgba(17, 24, 39, 0.85);
+
+            box-shadow:
+                0 0 20px rgba(0, 229, 255, 0.1);
+        }
+
+
+        /* =====================================================
+           STATUS
+        ====================================================== */
+
+        .status-pulse::before {
+
+            content: "";
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 999px;
+
+            background:
+                #22c55e;
+
+            box-shadow:
+                0 0 0 0 rgba(34, 197, 94, 0.6);
+
+            animation:
+                statusPulse 2s infinite;
+        }
+
+
+        @keyframes statusPulse {
+
+            0% {
+                box-shadow:
+                    0 0 0 0 rgba(34, 197, 94, 0.6);
+            }
+
+            70% {
+                box-shadow:
+                    0 0 0 8px rgba(34, 197, 94, 0);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero-title {
+
+            text-shadow:
+                0 0 35px rgba(59, 130, 246, 0.08);
+        }
+
+
+        .idea-glow {
+
+            color: #60A5FA;
+
+            text-shadow:
+                0 0 25px rgba(0, 229, 255, 0.2);
+        }
+
+
+        .profile-frame {
+
+            position: relative;
+
+            animation:
+                profileFloat 6s ease-in-out infinite;
+        }
+
+
+        .profile-frame::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: -20px;
+
+            border-radius: 999px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,229,255,0.18),
+                    transparent 65%
+                );
+
+            filter:
+                blur(20px);
+
+            z-index: -1;
+
+            animation:
+                pulseGlow 4s ease-in-out infinite;
+        }
+
+
+        @keyframes profileFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px);
+            }
+        }
+
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                opacity: 0.55;
+                transform: scale(0.95);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.08);
+            }
+        }
+
+
+        /* =====================================================
+           FLOATING BADGES
+        ====================================================== */
+
+        .floating-badge {
+
+            animation:
+                badgeFloat 5s ease-in-out infinite;
+        }
+
+
+        .floating-badge-delayed {
+
+            animation:
+                badgeFloat 5s ease-in-out 1.5s infinite;
+        }
+
+
+        @keyframes badgeFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-8px);
+            }
+        }
+
+
+        /* =====================================================
+           TECH BADGES
+        ====================================================== */
+
+        .tech-badge {
+
+            border:
+                1px solid rgba(0, 229, 255, 0.18);
+
+            background:
+                rgba(0, 229, 255, 0.05);
+
+            transition:
+                all 0.25s ease;
+        }
+
+
+        .tech-badge:hover {
+
+            border-color:
+                rgba(0, 229, 255, 0.45);
+
+            background:
+                rgba(0, 229, 255, 0.09);
+
+            box-shadow:
+                0 0 15px rgba(0, 229, 255, 0.1);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           REVEAL ANIMATIONS
+        ====================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .reveal-left {
+
+            opacity: 0;
+
+            transform:
+                translateX(-45px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .reveal-right {
+
+            opacity: 0;
+
+            transform:
+                translateX(45px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .reveal-scale {
+
+            opacity: 0;
+
+            transform:
+                scale(0.92);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .is-visible {
+
+            opacity: 1;
+
+            transform:
+                translate(0, 0)
+                scale(1);
+        }
+
+
+        /* =====================================================
+           INPUTS
+        ====================================================== */
+
+        .animated-input {
+
+            background:
+                rgba(9, 13, 22, 0.8) !important;
+
+            border:
+                1px solid rgba(59, 130, 246, 0.2) !important;
+
+            transition:
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .animated-input:focus {
+
+            outline: none !important;
+
+            border-color:
+                #00E5FF !important;
+
+            box-shadow:
+                0 0 0 3px rgba(0, 229, 255, 0.08),
+                0 0 20px rgba(0, 229, 255, 0.08);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =====================================================
+           TYPEWRITER
+        ====================================================== */
+
+        .type-cursor {
+
+            display: inline-block;
+
+            color: #00E5FF;
+
+            animation:
+                cursorBlink 0.9s infinite;
+        }
+
+
+        @keyframes cursorBlink {
+
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            46%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           ICON ANIMATION
+        ====================================================== */
+
+        .animated-icon {
+
+            transition:
+                transform 0.35s ease,
+                color 0.35s ease;
+        }
+
+
+        .glass-card:hover .animated-icon {
+
+            transform:
+                scale(1.12)
+                rotate(-4deg);
+
+            color:
+                #00E5FF;
+        }
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ====================================================== */
+
+        #scroll-progress {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            height: 2px;
+
+            width: 0;
+
+            z-index: 9999;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #3B82F6,
+                    #00E5FF
+                );
+
+            box-shadow:
+                0 0 12px rgba(0, 229, 255, 0.7);
+
+            transition:
+                width 0.08s linear;
+        }
+
+
+        /* =====================================================
+           CURSOR GLOW
+        ====================================================== */
+
+        #cursor-glow {
+
+            position: fixed;
+
+            width: 220px;
+
+            height: 220px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,229,255,0.08),
+                    transparent 70%
+                );
+
+            transform:
+                translate(-50%, -50%);
+
+            opacity: 0;
+
+            transition:
+                opacity 0.3s ease;
+        }
+
+
+        /* =====================================================
+           RIPPLE
+        ====================================================== */
+
+        .ripple-wave {
+
+            position: absolute;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.35);
+
+            transform:
+                scale(0);
+
+            animation:
+                ripple 0.6s ease-out;
+
+            pointer-events: none;
+        }
+
+
+        @keyframes ripple {
+
+            to {
+
+                transform:
+                    scale(4);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ====================================================== */
+
+        #back-to-top {
+
+            position: fixed;
+
+            right: 24px;
+
+            bottom: 24px;
+
+            z-index: 100;
+
+            width: 46px;
+
+            height: 46px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 999px;
+
+            border:
+                1px solid rgba(59,130,246,0.25);
+
+            background:
+                rgba(17,24,39,0.75);
+
+            backdrop-filter:
+                blur(12px);
+
+            color: #ffffff;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translateY(15px);
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        #back-to-top.visible {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+
+        #back-to-top:hover {
+
+            border-color:
+                rgba(0,229,255,0.45);
+
+            box-shadow:
+                0 0 20px rgba(0,229,255,0.2);
+
+            transform:
+                translateY(-4px);
+        }
+
+
+        /* =====================================================
+           HERO LOAD
+        ====================================================== */
+
+        .hero-load {
+
+            animation:
+                fadeUp 0.9s ease both;
+        }
+
+
+        .hero-load-delay-1 {
+
+            animation:
+                fadeUp 0.9s ease 0.15s both;
+        }
+
+
+        .hero-load-delay-2 {
+
+            animation:
+                fadeUp 0.9s ease 0.3s both;
+        }
+
+
+        .hero-load-delay-3 {
+
+            animation:
+                fadeUp 0.9s ease 0.45s both;
+        }
+
+
+        @keyframes fadeUp {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(25px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 767px) {
+
+            .headline-responsive {
+
+                font-size: 36px;
+
+                line-height: 44px;
+            }
+
+
+            .ambient-orb {
+
+                filter:
+                    blur(60px);
+
+                opacity:
+                    0.25;
+            }
+
+
+            #cursor-glow {
+
+                display: none;
+            }
+
+
+            #back-to-top {
+
+                right: 16px;
+
+                bottom: 16px;
+            }
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+
+            .headline-responsive {
+
+                font-size: 46px;
+
+                line-height: 54px;
+            }
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+
+                scroll-behavior: auto;
+            }
+
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+
+
+            .site-grid {
+
+                animation: none;
+            }
+
+
+            .reveal,
+            .reveal-left,
+            .reveal-right,
+            .reveal-scale {
+
+                opacity: 1;
+
+                transform: none;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body class="bg-deep-canvas text-on-surface">
+
+    <!-- =========================================================
+         DECORATIONS
+    ========================================================== -->
+
+    <div
+        id="scroll-progress"
+        aria-hidden="true"
+    ></div>
+
+
+    <div
+        class="site-grid"
+        aria-hidden="true"
+    ></div>
+
+
+    <div
+        id="cursor-glow"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =========================================================
+         HEADER / NAVBAR
+    ========================================================== -->
+
+    <header
+        class="fixed top-0 left-0 right-0 z-50"
+    >
+
+        <div
+            class="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:px-12"
+        >
+
+            <!-- LOGO -->
+
+            <a
+                href="#accueil"
+                class="group flex items-center gap-3 shrink-0"
+                aria-label="BABO DDev - Accueil"
+            >
+
+                <div
+                    class="relative h-11 w-11 overflow-hidden rounded-xl border border-cobalt/30 bg-surface-container"
+                >
+
+                    <img
+                      src="./image-removebg-preview.png"  
+                      alt="Logo BABO DDev"
+                        class="h-full w-full object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+
+                    <div
+                        class="hidden h-full w-full items-center justify-center bg-gradient-to-br from-cobalt to-cyan font-display font-bold text-white"
+                    >
+                        
+                    </div>
+
+                </div>
+
+
+                <div class="hidden sm:block">
+
+                    <div
+                        class="font-display text-lg font-bold tracking-tight text-high-text"
+                    >
+                        BABO <span class="text-light-cobalt">DDev</span>
+                    </div>
+
+                    <div
+                        class="font-mono text-[10px] uppercase tracking-widest text-muted"
+                    >
+                        Abidjan • Abobo
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- =================================================
+                 NAVIGATION DESKTOP
+            ================================================== -->
+
+            <nav
+                class="hidden items-center gap-5 lg:flex xl:gap-7"
+                aria-label="Navigation principale"
+            >
+
+                <a
+                    href="#accueil"
+                    data-path="accueil"
+                    class="nav-link text-sm font-semibold text-on-surface-variant hover:text-primary"
+                >
+                    Accueil
+                </a>
+
+
+                <a
+                    href="#a-propos"
+                    data-path="a-propos"
+                    class="nav-link text-sm font-semibold text-on-surface-variant hover:text-primary"
+                >
+                    À propos
+                </a>
+
+
+                <a
+                    href="#competences"
+                    data-path="competences"
+                    class="nav-link text-sm font-semibold text-on-surface-variant hover:text-primary"
+                >
+                    Compétences
+                </a>
+
+
+                <a
+                    href="#projets"
+                    data-path="projets"
+                    class="nav-link text-sm font-semibold text-on-surface-variant hover:text-primary"
+                >
+                    Projets
+                </a>
+
+
+                <a
+                    href="#formation"
+                    data-path="formation"
+                    class="nav-link text-sm font-semibold text-on-surface-variant hover:text-primary"
+                >
+                    Formation
+                </a>
+
+
+                <a
+                    href="#contact"
+                    data-path="contact"
+                    class="nav-link text-sm font-semibold text-on-surface-variant hover:text-primary"
+                >
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <!-- ACTIONS -->
+
+            <div class="flex items-center gap-2 sm:gap-3">
+
+               <a
+    href="https://wa.me/2250565138646"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="glow-button hidden items-center gap-2 rounded-lg bg-primary-container px-4 py-2.5 text-sm font-semibold text-white md:inline-flex transition-all duration-300 hover:scale-105 hover:shadow-lg"
+>
+    <i class="fa-brands fa-whatsapp text-[18px]"></i>
+
+    WhatsApp
+</a>
+
+
+                <a
+                    href="#contact"
+                    class="hidden h-10 w-10 items-center justify-center rounded-lg border border-outline-variant bg-surface-container text-on-surface transition hover:border-cyan/40 hover:text-cyan lg:flex"
+                    aria-label="Contacter BABO DDev"
+                >
+
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+
+                </a>
+
+
+                <!-- MOBILE MENU BUTTON -->
+
+                <button
+                    id="menu-button"
+                    type="button"
+                    class="flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant bg-surface-container text-on-surface transition hover:border-cyan/40 hover:text-cyan lg:hidden"
+                    aria-label="Ouvrir le menu"
+                    aria-expanded="false"
+                >
+
+                    <span
+                        id="menu-icon"
+                        class="material-symbols-outlined"
+                    >
+                        menu
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             MOBILE MENU
+        ====================================================== -->
+
+        <div
+            id="mobile-menu"
+            class="lg:hidden"
+        >
+
+            <div
+                class="mx-4 mb-4 rounded-2xl border border-cobalt/20 bg-surface-base/90 p-4 shadow-2xl backdrop-blur-xl"
+            >
+
+                <div class="space-y-1">
+
+                    <a href="#accueil" data-nav="accueil">
+                        Accueil
+                    </a>
+
+                    <a href="#a-propos" data-nav="a-propos">
+                        À propos
+                    </a>
+
+                    <a href="#competences" data-nav="competences">
+                        Compétences
+                    </a>
+
+                    <a href="#projets" data-nav="projets">
+                        Projets
+                    </a>
+
+                    <a href="#formation" data-nav="formation">
+                        Formation
+                    </a>
+
+                    <a href="#contact" data-nav="contact">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <a
+                    href="https://wa.me/2250565138646"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-4 !flex items-center justify-center gap-2 bg-primary-container !text-white"
+                >
+
+                    <span class="material-symbols-outlined">
+                        chat
+                    </span>
+
+                    Me contacter sur WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="relative z-10">
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section
+            id="accueil"
+            class="relative flex min-h-screen scroll-mt-20 items-center overflow-hidden pt-24"
+        >
+
+            <!-- ORBS -->
+
+            <div
+                class="ambient-orb orb-blue absolute -left-32 top-24 h-80 w-80"
+            ></div>
+
+            <div
+                class="ambient-orb orb-cyan absolute -right-32 top-40 h-96 w-96"
+            ></div>
+
+            <div
+                class="ambient-orb orb-purple absolute bottom-0 left-1/3 h-72 w-72"
+            ></div>
+
+
+            <div
+                class="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-12 lg:px-12 lg:py-28"
+            >
+
+                <!-- HERO TEXT -->
+
+                <div class="lg:col-span-7">
+
+                    <!-- STATUS -->
+
+                    <div
+                        class="status-pulse hero-load inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/5 px-4 py-2 font-mono text-xs font-medium tracking-wide text-secondary-container"
+                    >
+
+                        DÉVELOPPEUR WEB · // ABIDJAN
+
+                    </div>
+
+
+                    <!-- TITLE -->
+
+                    <h1
+                        class="hero-title hero-load-delay-1 headline-responsive mt-7 max-w-4xl font-display text-5xl font-bold leading-tight tracking-tight text-high-text lg:text-headline-xl"
+                    >
+
+                        Vos ambitions 
+                        <span class="idea-glow">
+                            prennent
+                        </span>
+                        forme.
+
+                    </h1>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p
+                        class="hero-load-delay-2 mt-7 max-w-2xl font-body text-lg leading-8 text-secondary-text"
+                    >
+
+                        Je suis développeur web basé à
+                        <strong class="text-on-surface">
+                            Abidjan, Côte d’Ivoire
+                        </strong>.
+
+                        Je conçois des sites et applications modernes,
+                        rapides et adaptés aux besoins des clients,
+                        entreprises et créateurs.
+
+                    </p>
+
+
+                    <!-- TYPEWRITER -->
+
+                    <div
+                        class="hero-load-delay-2 mt-5 flex items-center gap-2 font-mono text-sm text-muted"
+                    >
+
+                        <span class="text-secondary-container">
+                            $
+                        </span>
+
+                        <span>
+                            Pour vous
+                        </span>
+
+                        <span class="text-cyan">
+                            /
+                        </span>
+
+                        <span id="typewriter">
+                            React + Node.js
+                        </span>
+
+                        <span class="type-cursor">
+                            _
+                        </span>
+
+                    </div>
+
+
+                    <!-- CTA -->
+
+                    <div
+                        class="hero-load-delay-3 mt-9 flex flex-col gap-3 sm:flex-row"
+                    >
+
+                        <a
+                            href="#projets"
+                            class="glow-button ripple inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-cobalt px-6 py-3.5 font-semibold text-white"
+                        >
+
+                            Voir mes projets
+
+                            <span class="material-symbols-outlined text-[20px]">
+                                arrow_forward
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="#contact"
+                            class="secondary-button inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 font-semibold text-high-text"
+                        >
+
+                            Me contacter
+
+                            <span class="material-symbols-outlined text-[20px]">
+                                mail
+                            </span>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- STATS -->
+
+                    <div
+                        class="hero-load-delay-3 mt-12 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4"
+                    >
+
+                        <div>
+
+                            <div
+                                class="font-display text-2xl font-bold text-high-text"
+                            >
+                                <span
+                                    data-counter
+                                    data-target="5"
+                                    data-suffix="+"
+                                >
+                                    5+
+                                </span>
+                            </div>
+
+                            <div
+                                class="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted"
+                            >
+                                Années d'expérience
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div
+                                class="font-display text-2xl font-bold text-high-text"
+                            >
+                                <span
+                                    data-counter
+                                    data-target="30"
+                                    data-suffix="+"
+                                >
+                                    30+
+                                </span>
+                            </div>
+
+                            <div
+                                class="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted"
+                            >
+                                Projets livrés
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div
+                                class="font-display text-2xl font-bold text-high-text"
+                            >
+                                <span
+                                    data-counter
+                                    data-target="90"
+                                    data-suffix="%"
+                                >
+                                    90%
+                                </span>
+                            </div>
+
+                            <div
+                                class="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted"
+                            >
+                                Satisfaction client
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div
+                                class="font-display text-2xl font-bold text-high-text"
+                            >
+                                Cote d'ivoire 
+                            </div>
+
+                            <div
+                                class="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted"
+                            >
+                              Abobo & Abidjan
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO IMAGE -->
+
+                <div
+                    class="reveal-scale relative flex justify-center lg:col-span-5"
+                >
+
+                    <div class="profile-frame relative">
+
+                        <div
+                            class="absolute inset-[-14px] rounded-full border border-cyan/10"
+                        ></div>
+
+                        <div
+                            class="absolute inset-[-30px] rounded-full border border-cobalt/10"
+                        ></div>
+
+
+                        <div
+                            class="relative h-72 w-72 overflow-hidden rounded-full border border-cobalt/30 bg-surface-container-high shadow-2xl shadow-cobalt/10 sm:h-80 sm:w-80 lg:h-[390px] lg:w-[390px]"
+                        >
+
+                            <img
+                                src="./ChatGPT Image 10 mai 2026, 17_22_03.png"
+                                alt="Babo DDev - Développeur "
+                                class="h-full w-full object-cover"
+                                loading="eager"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            >
+
+                            <div
+                                class="hidden h-full w-full items-center justify-center bg-gradient-to-br from-surface-container-high to-surface-container-lowest"
+                            >
+
+                                <span
+                                    class="font-display text-6xl font-bold text-cobalt"
+                                >
+                                    
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BADGE 1 -->
+
+                        <div
+                            class="floating-badge absolute -left-8 top-10 rounded-xl border border-cobalt/20 bg-surface-base/80 px-4 py-3 shadow-xl backdrop-blur-xl sm:-left-12"
+                        >
+
+                            <div
+                                class="font-mono text-[10px] uppercase tracking-wider text-muted"
+                            >
+                                Nom
+                            </div>
+
+                            <div
+                                class="mt-1 font-display text-sm font-semibold text-high-text"
+                            >
+                                BABO
+                            </div>
+
+                        </div>
+
+
+                        <!-- BADGE 2 -->
+
+                        <div
+                            class="floating-badge-delayed absolute -right-5 bottom-14 rounded-xl border border-cyan/20 bg-surface-base/80 px-4 py-3 shadow-xl backdrop-blur-xl sm:-right-12"
+                        >
+
+                            <div
+                                class="font-mono text-[10px] uppercase tracking-wider text-muted"
+                            >
+                                Prénom
+                            </div>
+
+                            <div
+                                class="mt-1 font-display text-sm font-semibold text-high-text"
+                            >
+                                Guy Daniel
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             COMPETENCES
+        ====================================================== -->
+
+        <section
+            id="competences"
+            class="scroll-mt-20 py-24 lg:py-32"
+        >
+
+            <div
+                class="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-12"
+            >
+
+                <div class="reveal max-w-2xl">
+
+                    <div
+                        class="font-mono text-xs uppercase tracking-[0.25em] text-secondary-container"
+                    >
+                        // expertise
+                    </div>
+
+                    <h2
+                        class="mt-4 font-display text-headline-lg text-high-text"
+                    >
+                        Des compétences pensées pour le web moderne.
+                    </h2>
+
+                    <p
+                        class="mt-5 font-body text-body-lg text-secondary-text"
+                    >
+                        De l'interface utilisateur jusqu'au serveur,
+                        je construis des solutions cohérentes,
+                        performantes et maintenables.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4"
+                >
+
+                    <!-- CARD 1 -->
+
+                    <article
+                        class="glass-card reveal rounded-2xl p-6"
+                        data-delay="0"
+                        data-tilt
+                    >
+
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-xl border border-cobalt/20 bg-cobalt/10"
+                        >
+
+                            <span
+                                class="animated-icon material-symbols-outlined text-2xl text-light-cobalt"
+                            >
+                                code
+                            </span>
+
+                        </div>
+
+
+                        <h3
+                            class="mt-6 font-display text-headline-sm text-high-text"
+                        >
+                            Notions fondamentales du web
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-sm leading-6 text-secondary-text"
+                        >
+                           Le HTML, CSS et JavaScript sont les bases de mes constructions web. 
+                           Ils me permettent de donner vie à mes idées en créant des interfaces modernes, 
+                           responsives et interactives, adaptées aux besoins de chaque projet.
+                        </p>
+
+
+                        <div
+                            class="mt-6 flex flex-wrap gap-2"
+                        >
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                HTML
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                CSS
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                JavaScript
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CARD 2 -->
+
+                    <article
+                        class="glass-card reveal rounded-2xl p-6"
+                        data-delay="100"
+                        data-tilt
+                    >
+
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan/20 bg-cyan/10"
+                        >
+
+                            <span
+                                class="animated-icon material-symbols-outlined text-2xl text-cyan"
+                            >
+                                dns
+                            </span>
+
+                        </div>
+
+
+                        <h3
+                            class="mt-6 font-display text-headline-sm text-high-text"
+                        >
+                            Backend & APIs
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-sm leading-6 text-secondary-text"
+                        >
+                            Des serveurs robustes, des APIs sécurisées
+                            et des bases de données adaptées aux projets.
+                        </p>
+
+
+                        <div
+                            class="mt-6 flex flex-wrap gap-2"
+                        >
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                Node.js
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                PostgreSQL
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                REST
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                Supabase
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CARD 3 -->
+
+                    <article
+                        class="glass-card reveal rounded-2xl p-6"
+                        data-delay="200"
+                        data-tilt
+                    >
+
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-xl border border-cobalt/20 bg-cobalt/10"
+                        >
+
+                            <span
+                                class="animated-icon material-symbols-outlined text-2xl text-light-cobalt"
+                            >
+                                speed
+                            </span>
+
+                        </div>
+
+
+                        <h3
+                            class="mt-6 font-display text-headline-sm text-high-text"
+                        >
+                            Interfaces web & Applications
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-sm leading-6 text-secondary-text"
+                        >
+                            Conception d'interfaces modernes,
+                             responsives et interactives adaptées aux différents écrans et besoins des utilisateurs.
+                        </p>
+
+
+                        <div
+                            class="mt-6 flex flex-wrap gap-2"
+                        >
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                Core Web Vitals   React 
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                SEO  Tailwind CSS 
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                SSR  Responsive Design
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                SSG
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CARD 4 -->
+
+                    <article
+                        class="glass-card reveal rounded-2xl p-6"
+                        data-delay="300"
+                        data-tilt
+                    >
+
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan/20 bg-cyan/10"
+                        >
+
+                            <span
+                                class="animated-icon material-symbols-outlined text-2xl text-cyan"
+                            >
+                                design_services
+                            </span>
+
+                        </div>
+
+
+                        <h3
+                            class="mt-6 font-display text-headline-sm text-high-text"
+                        >
+                            Technologies & Outils
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-sm leading-6 text-secondary-text"
+                        >
+                           Utilisation des outils et technologies nécessaires au développement,
+                            à la gestion du code et à la réalisation de projets web.
+                        </p>
+
+
+                        <div
+                            class="mt-6 flex flex-wrap gap-2"
+                        >
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                 VS Code
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                 GitHub
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                 npm · Vite
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                Animations 
+                            </span>
+                            
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                 Figma UI/UX
+                            </span>
+
+
+                        </div>
+
+                    </article>
+                    <article
+                        class="glass-card reveal rounded-2xl p-6"
+                        data-delay="300"
+                        data-tilt
+                    >
+
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan/20 bg-cyan/10"
+                        >
+
+                            <span
+                                class="animated-icon material-symbols-outlined text-2xl text-cyan"
+                            >
+                                  design_services
+                            </span>
+
+                        </div>
+
+
+                        <h3
+                            class="mt-6 font-display text-headline-sm text-high-text"
+                        >
+                            Déploiement & Infrastructure
+                        </h3>
+
+
+                        <p
+                            class="mt-3 text-sm leading-6 text-secondary-text"
+                        >
+                           Mise en place de serveurs, gestion des bases de données, 
+                           développement d'API et déploiement des applications web.
+                        </p>
+
+
+                        <div
+                            class="mt-6 flex flex-wrap gap-2"
+                        >
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                 Node.js
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                 Express
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                                 MySQL
+                            </span>
+
+                            <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs text-cyan">
+                               Hébergement 
+                            </span>
+                            
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PROJETS
+        ====================================================== -->
+
+        <section
+            id="projets"
+            class="scroll-mt-20 py-24 lg:py-32"
+        >
+
+            <div
+                class="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-12"
+            >
+
+                <div
+                    class="glass-panel reveal rounded-3xl p-6 sm:p-8 lg:p-12"
+                >
+
+                    <div
+                        class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
+                    >
+
+                        <div>
+
+                            <div
+                                class="font-mono text-xs uppercase tracking-[0.25em] text-secondary-container"
+                            >
+                                // selected_work
+                            </div>
+
+                            <h2
+                                class="mt-4 font-display text-headline-lg text-high-text"
+                            >
+                                Des projets qui répondent à de vrais besoins.
+                            </h2>
+
+                        </div>
+
+
+                        <a
+                            href="#contact"
+                            class="secondary-button inline-flex shrink-0 items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold text-high-text"
+                        >
+
+                            Parlons de votre projet
+
+                            <span class="material-symbols-outlined text-[19px]">
+                                arrow_outward
+                            </span>
+
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="mt-10 grid gap-5 lg:grid-cols-3"
+                    >
+
+                        <!-- PROJECT 1 -->
+
+                        <article
+                            class="glass-card reveal group overflow-hidden rounded-2xl"
+                            data-tilt
+                        >
+
+                            <div
+                                class="relative flex h-52 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-950/70 via-surface-container to-cyan-950/30"
+                            >
+
+                                <div
+                                    class="absolute inset-0 opacity-30"
+                                    style="
+                                    background-image:
+                                    linear-gradient(
+                                        rgba(59,130,246,.15) 1px,
+                                        transparent 1px
+                                    ),
+                                    linear-gradient(
+                                        90deg,
+                                        rgba(59,130,246,.15) 1px,
+                                        transparent 1px
+                                    );
+                                    background-size:24px 24px;
+                                    "
+                                ></div>
+
+
+                                <span
+                                    class="relative font-mono text-4xl font-bold text-cyan/80" 
+                                >
+                                <a href="https://gestion-timbres-frontend.onrender.com/login" target="_blank">
+                                    <img src="./pwa-192x192.png" alt="Logo BABO DDev">
+                                </span>
+
+                            </div>
+
+
+                            <div class="p-6">
+
+                                <div
+                                    class="font-mono text-xs uppercase tracking-widest text-cyan"
+                                >
+                                    GESTION DES VENTES DE TIMBRES
+                                </div>
+
+                                <h3
+                                    class="mt-3 font-display text-xl font-semibold text-high-text"
+                                >
+                                    Plateforme de ventes de timbres Mairie d'Attecoube
+                                </h3>
+
+                                <p
+                                    class="mt-3 text-sm leading-6 text-secondary-text"
+                                >
+                                    Une expérience pensée pour simplifier
+                                    les paiements et transferts numériques.
+                                </p>
+
+
+                                <div class="mt-5 flex flex-wrap gap-2">
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                       react.js 
+                                    </span>
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                        html/css
+                                    </span>
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                        PostgreSQL
+                                    </span>
+
+                                </div>
+
+                            </div>
+                            </a>
+
+                        </article>
+
+
+                        <!-- PROJECT 2 -->
+
+                        <article
+                            class="glass-card reveal group overflow-hidden rounded-2xl"
+                            data-tilt
+                        >
+
+                            <div
+                                class="relative flex h-52 items-center justify-center overflow-hidden bg-gradient-to-br from-cyan-950/40 via-surface-container to-blue-950/70"
+                            >
+
+                                <div
+                                    class="absolute h-32 w-32 rounded-full border border-cyan/20"
+                                ></div>
+
+                                <div
+                                    class="absolute h-48 w-48 rounded-full border border-cobalt/10"
+                                ></div>
+                              <a href="https://bethel-glory-media-frontend.onrender.com/" target="_blank">
+                                <span
+                                    class="relative font-mono text-4xl font-bold text-light-cobalt/80"
+                                >
+                                
+                                  <img src="./pwa-192x192 - Copie.png" alt="Logo BABO DDev">
+                                </span>
+
+                            </div>
+
+
+                            <div class="p-6">
+
+                                <div
+                                    class="font-mono text-xs uppercase tracking-widest text-cyan"
+                                >
+                                    BETHEL GLORY MEDIA
+                                </div>
+
+                                <h3
+                                    class="mt-3 font-display text-xl font-semibold text-high-text"
+                                >
+                                    Plateforme de publications 
+                                </h3>
+
+                                <p
+                                    class="mt-3 text-sm leading-6 text-secondary-text"
+                                >
+                                    une platforme de création et de publication 
+                                </p>
+
+
+                                <div class="mt-5 flex flex-wrap gap-2">
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                        React
+                                    </span>
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                        Supabase
+                                    </span>
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                        Stripe
+                                    </span>
+
+                                </div>
+
+                            </div>
+                          </a>
+                        </article>
+
+
+                        <!-- PROJECT 3 -->
+                        <a href="./index.html#projets" target="_blank" rel="noopener noreferrer">
+
+                        <article
+                            class="glass-card reveal group overflow-hidden rounded-2xl"
+                            data-tilt
+                        >  
+
+                            <div
+                                class="relative flex h-52 items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-950/60 via-surface-container to-blue-950/60"
+                            >
+                        
+                                 <span
+                                    class="relative font-mono text-4xl font-bold text-light-cobalt/80"
+                                >
+                                
+                                  <img src="./image-removebg-preview.png" alt="Logo BABO DDev">
+                                </span>
+
+
+                            </div>
+
+
+                            <div class="p-6">
+
+                                <div
+                                    class="font-mono text-xs uppercase tracking-widest text-cyan"
+                                >
+                                     DASHBOARD de présentation 
+                                </div>
+
+                                <h3
+                                    class="mt-3 font-display text-xl font-semibold text-high-text"
+                                >
+                                    Analytics & CRM B2B
+                                </h3>
+
+                                <p
+                                    class="mt-3 text-sm leading-6 text-secondary-text"
+                                >
+                                    Tableau de bord centralisant les données,
+                                    indicateurs et opérations d'une entreprise.
+                                </p>
+
+
+                                <div class="mt-5 flex flex-wrap gap-2">
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                        html/css
+                                    </span>
+
+                                    <span class="tech-badge rounded-full px-3 py-1 font-mono text-xs">
+                                        Tailwind
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </article>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             À PROPOS
+        ====================================================== -->
+
+        <section
+            id="a-propos"
+            class="scroll-mt-20 py-24 lg:py-32"
+        >
+
+            <div class="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-12">
+
+                <!-- HEADER INTRO -->
+                <div class="reveal max-w-3xl">
+
+                    <div class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-secondary-container">
+                        <span class="h-1.5 w-1.5 rounded-full bg-cyan"></span>
+                        Profil // Trajectoire 
+                    </div>
+
+                    <h2 class="mt-5 font-display text-4xl font-bold tracking-tight text-high-text sm:text-5xl lg:text-headline-lg">
+                        coulisses <span class="idea-glow">BABO DDev</span>.
+                    </h2>
+
+                    <p class="mt-6 max-w-2xl text-lg leading-8 text-secondary-text">
+                        Amoureux de l'informatique, développeur web basé à
+                        <strong class="text-on-surface">Abidjan</strong>
+                        et freelance — je transforme les idées en produits web concrets.
+                    </p>
+
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span class="tech-badge rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-cyan">
+                            Développeur web
+                        </span>
+                        <span class="tech-badge rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-cyan">
+                            Freelance
+                        </span>
+                        <span class="tech-badge rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-cyan">
+                            Abidjan, Côte d'Ivoire
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- DIVIDER -->
+                <div class="my-12 h-px bg-gradient-to-r from-transparent via-cobalt/25 to-transparent"></div>
+
+                <!-- PHOTO + BIO -->
+                <div class="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+
+                    <!-- PHOTO COL -->
+                    <div class="reveal-left lg:col-span-5">
+
+                        <div class="overflow-hidden rounded-2xl border border-cobalt/20 bg-surface-container shadow-2xl shadow-cobalt/10">
+                            <img
+                                src="./IMG-20251213-WA0010-removebg-preview.png"
+                                alt="Babo DDev — Développeur Full-Stack"
+                                class="aspect-[4/5] h-full w-full object-cover"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            >
+                            <div class="hidden aspect-[4/5] w-full items-center justify-center bg-gradient-to-br from-surface-container-high to-surface-container-lowest">
+                                <span class="font-display text-5xl font-bold text-cobalt">BD</span>
+                            </div>
+                        </div>
+
+                        <!-- STATUS CARDS -->
+                        <div class="mt-5 grid grid-cols-3 gap-3">
+
+                            <div class="glass-card rounded-xl p-3 text-center sm:p-4">
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Status
+                                </div>
+                                <div class="mt-1.5 flex items-center justify-center gap-1.5">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-green-400"></span>
+                                    <span class="text-xs font-semibold text-green-400 sm:text-sm">
+                                        Disponible
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="glass-card rounded-xl p-3 text-center sm:p-4">
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Filière 
+                                </div>
+                                <div class="mt-1.5 text-xs font-semibold text-high-text sm:text-sm">
+                                    IDA
+                                </div>
+                            </div>
+
+                            <div class="glass-card rounded-xl p-3 text-center sm:p-4">
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Localisation
+                                </div>
+                                <div class="mt-1.5 text-xs font-semibold text-high-text sm:text-sm">
+                                    Abidjan, CI
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- SOFT SKILLS -->
+                        <div class="mt-4">
+                            <div class="mb-2 font-mono text-[10px] uppercase tracking-wider text-muted">
+                                Soft skills
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="rounded-lg border border-cobalt/20 bg-cobalt/5 px-3 py-1.5 text-xs font-medium text-secondary-text">
+                                    Developpeur
+                                </span>
+                                <span class="rounded-lg border border-cobalt/20 bg-cobalt/5 px-3 py-1.5 text-xs font-medium text-secondary-text">
+                                    musicien
+                                </span>
+                                <span class="rounded-lg border border-cobalt/20 bg-cobalt/5 px-3 py-1.5 text-xs font-medium text-secondary-text">
+                                    chrétient 
+                                </span>
+                                 <span class="rounded-lg border border-cobalt/20 bg-cobalt/5 px-3 py-1.5 text-xs font-medium text-secondary-text">
+                                    plus 
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- BIO COL -->
+                    <div class="reveal-right lg:col-span-7">
+
+                        <h3 class="font-display text-2xl font-semibold text-high-text sm:text-3xl">
+                            Vos 
+                            <span class="idea-glow">ambitions</span>
+                             prennent forme. 
+                        </h3>
+
+                        <div class="mt-6 space-y-5 text-base leading-7 text-secondary-text sm:text-lg sm:leading-8">
+
+                            <p>
+                                Bonjour à tous. De mon côté, l’informatique est une histoire de longue date. J’ai commencé par simple curiosité, en voulant comprendre ce qui se passait derrière l'écran, et aujourd'hui, c'est mon métier. Je conçois et développe des sites et des applications web en freelance, du premier brief jusqu’à la mise en ligne.
+                            </p>
+
+                            <p>
+                                Ma spécialité, c'est d'avoir une vision globale. Je ne fais pas que de l'interface : je m'intéresse de près au réseau, à la sécurité et à l'expérience utilisateur, car l'infrastructure qui porte un produit est tout aussi importante que ce que l'utilisateur voit.
+                            </p>
+
+                            <p>
+                                Mon profil combine des fondations théoriques universitaires et une forte culture de l'apprentissage par la pratique. J'apprends en construisant et en résolvant des problèmes concrets.
+                            </p>
+
+                            <p>
+                                Enfin, travailler avec moi, c'est choisir la carte de la directivité et de la simplicité : on échange en direct, sans intermédiaire et sans jargon technique inutile, pour transformer efficacement votre idée en réalité.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- METHOD -->
+                <div class="mt-20 reveal">
+
+                    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                            <div class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-secondary-container">
+                                <span class="h-1.5 w-1.5 rounded-full bg-cyan"></span>
+                                Méthode de travail
+                            </div>
+                            <h3 class="mt-4 font-display text-3xl font-bold text-high-text sm:text-4xl">
+                                Comment je procède.
+                            </h3>
+                        </div>
+                        <p class="max-w-sm text-sm leading-6 text-secondary-text">
+                            Une progression simple, sans zone d'ombre, du premier échange à la mise en ligne.
+                        </p>
+                    </div>
+
+                    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+                        <article class="glass-card rounded-2xl p-5">
+                            <div class="font-mono text-xs font-semibold text-cyan">
+                                Partie 01
+                            </div>
+                            <h4 class="mt-3 font-display text-xl font-semibold text-high-text">
+                                Immersion
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-secondary-text">
+                                Analyser vos objectifs métiers avant de coder. 
+                                Poser les questions cruciales pour poser des fondations logicielles saines.                            </p>
+                        </article>
+
+                        <article class="glass-card rounded-2xl p-5">
+                            <div class="font-mono text-xs font-semibold text-cyan">
+                                Partie 02
+                            </div>
+                            <h4 class="mt-3 font-display text-xl font-semibold text-high-text">
+                                 Cadrage
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-secondary-text">
+                                 Valider le périmètre fonctionnel, le planning et la stack technique. 
+                                 Vous gardez une visibilité totale sur la direction du projet.
+                            </p>
+                        </article>
+
+                        <article class="glass-card rounded-2xl p-5">
+                            <div class="font-mono text-xs font-semibold text-cyan">
+                                Partie 03
+                            </div>
+                            <h4 class="mt-3 font-display text-xl font-semibold text-high-text">
+                                 Développement
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-secondary-text">
+                               Développer par cycles courts avec des points d'étape réguliers. 
+                               Le code avance de manière transparente, sans effet "boîte noire".
+                            </p>
+                        </article>
+
+                        <article class="glass-card rounded-2xl p-5">
+                            <div class="font-mono text-xs font-semibold text-cyan">
+                                Partie 04
+                            </div>
+                            <h4 class="mt-3 font-display text-xl font-semibold text-high-text">
+                                Déploiement
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-secondary-text">
+                                Mise en production, transfert de compétences et documentation technique. 
+                                Votre application reste évolutive et facilement maintenable.
+                            </p>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FORMATION
+        ====================================================== -->
+
+        <section
+            id="formation"
+            class="scroll-mt-20 py-24 lg:py-32"
+        >
+
+            <div
+                class="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-12"
+            >
+
+                <div class="reveal">
+
+                    <div
+                        class="font-mono text-xs uppercase tracking-[0.25em] text-secondary-container"
+                    >
+                        // formation
+                    </div>
+
+
+                    <h2
+                        class="mt-4 font-display text-headline-lg text-high-text"
+                    >
+                        Parcours & formation
+                    </h2>
+
+                </div>
+
+
+                <div
+                    class="mt-10 max-w-3xl"
+                >
+
+                    <div
+                        class="glass-card reveal relative overflow-hidden rounded-2xl p-7 sm:p-8"
+                    >
+
+                        <div
+                            class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cobalt to-cyan"
+                        ></div>
+
+
+                        <div
+                            class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between"
+                        >
+                            <div>
+                              
+                                <div
+                                    class="font-mono text-sm font-semibold text-cyan"
+                                >
+                                    2024 — 2025
+                                </div>
+
+
+                                <h3
+                                    class="mt-3 font-display text-2xl font-semibold text-high-text"
+                                >
+                                    BTS Informatique Developpeur d'Application
+                                </h3>
+
+
+                                <p
+                                    class="mt-3 text-secondary-text"
+                                >
+                                    Développement web · Projets pratiques à <br>
+                                    l'institut superieur sainte foi d'Abobo (ISSFA)  <br> pour plus d'info cliquer sur la partie pour voir l'institut 
+                                    
+                                     
+                                </p>
+                            </div>
+                            <a href="https://legrandfrere.africa/etablissement/institut-superieur-sainte-foi-abidjan-issf-abidjan/" target="_blank">
+                                <article class="glass-card rounded-2xl p-5">
+                            <div class="font-mono text-xs font-semibold text-cyan">
+                                Cliquer ici
+                            </div>
+                            <h4 class="mt-3 font-display text-xl font-semibold text-high-text">
+                                Pour 
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-secondary-text">
+                         découvrir l’Institut Supérieur Sainte-Foi d’Abidjan (ISSFA), consulter sa présentation,
+                         ses formations et les informations relatives à l’établissement. <br>
+                         Découvrir l’ISSFA →
+
+                             </p>
+                            
+                                </article>
+                        </a> 
+                          
+
+                            <div
+                                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-cobalt/20 bg-cobalt/10"
+                            >
+
+                                <span
+                                    class="material-symbols-outlined text-cobalt"
+                                >
+                                    school
+                                </span>
+
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+          <section
+            id="stage"
+            class="scroll-mt-20 py-24 lg:py-32"
+        >
+
+            <div
+                class="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-12"
+            >
+
+                <div class="reveal">
+
+                    <div
+                        class="font-mono text-xs uppercase tracking-[0.25em] text-secondary-container"
+                    >
+                        // stage au service informatique à la mairie d'Attecoube
+                    </div>
+
+
+                    <h2
+                        class="mt-4 font-display text-headline-lg text-high-text"
+                    >
+                        formation professionnel
+                    </h2>
+
+                </div>
+
+
+                <div
+                    class="mt-10 max-w-3xl"
+                >
+
+                    <div
+                        class="glass-card reveal relative overflow-hidden rounded-2xl p-7 sm:p-8"
+                    >
+
+                        <div
+                            class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cobalt to-cyan"
+                        ></div>
+
+
+                        <div
+                            class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between"
+                        >
+                        
+                            <div>
+                              
+                                <div
+                                    class="font-mono text-sm font-semibold text-cyan"
+                                >
+                                    13 Mars 2026 — 12 Juin 2026
+                                </div>
+
+
+                                <h3
+                                    class="mt-3 font-display text-2xl font-semibold text-high-text"
+                                >
+                                    BTS Informatique Developpeur d'Application
+                                </h3>
+
+
+                                <p
+                                    class="mt-3 text-secondary-text"
+                                >
+                                    Le Maire de la commune d'Attécoubé <br>
+                                    vu la demande de mise en stage réceptionnée et enrégistrée dans leurs <br>
+                                    registres sous N°580 du 09/03/2026 par monsieur
+                                     <div
+                                    class="font-mono text-sm font-semibold text-cyan"
+                                >
+                                     BABO GUY DANIEL
+                                      <p  class="mt-3 text-secondary-text">
+                                        etudiant inscrit à l'Institut Supérieure Sainte Foi d'Abobo (ISSFA) Abidjan Admissible au Brevet de Technicien 
+                                        Supérieur (BTS) option : <p style="color: #22c55e;">Informatique Dévelopeur d'Application</p>
+                                      <p>
+                                        
+                                      </p>
+                                      
+                                </div> 
+                                effectue un stage de trois(03) mois allant du<p style="color: #22c55e;">13 Mars 2026 au 12 juin 2026</p>
+                                </p>
+                                au Service Informatique de la Mairie 
+                            </div>
+                            
+                          
+                         
+                         <a href="https://mairieattecoube.ci/#" target="_blank">
+
+                                <article class="glass-card rounded-2xl p-5">
+                            <div class="font-mono text-xs font-semibold text-cyan">
+                                Cliquer ici
+                            </div>
+                            <h4 class="mt-3 font-display text-xl font-semibold text-high-text">
+                                Pour 
+                            </h4>
+                            <p class="mt-2 text-sm leading-6 text-secondary-text">
+                                découvrir le site officiel de la Mairie d’Attécoubé et consulter ses différents services,
+                                 informations et activités. <br>Découvrir la Mairie d’Attécoubé →
+                            </p>
+                                </article>
+                        </a> 
+
+
+                            <div
+                                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-cobalt/20 bg-cobalt/10"
+                            >
+
+                                <span
+                                    class="material-symbols-outlined text-cobalt"
+                                >
+                                    school
+                                </span>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+        </section>
+        
+
+
+
+        <!-- =====================================================
+             CONTACT
+        ====================================================== -->
+
+        <section
+            id="contact"
+            class="scroll-mt-20 py-24 lg:py-32"
+        >
+
+            <div
+                class="mx-auto max-w-[1280px] px-5 sm:px-8 lg:px-12"
+            >
+
+                <div
+                    class="grid gap-8 lg:grid-cols-12"
+                >
+
+                    <!-- CONTACT INFO -->
+
+                    <div class="reveal-left lg:col-span-5">
+
+                        <div
+                            class="font-mono text-xs uppercase tracking-[0.25em] text-secondary-container"
+                        >
+                            // contact
+                        </div>
+
+
+                        <h2
+                            class="mt-4 font-display text-headline-lg text-high-text"
+                        >
+                            Construisons quelque chose d'utile.
+                        </h2>
+
+
+                        <p
+                            class="mt-5 max-w-xl text-body-lg text-secondary-text"
+                        >
+                            Vous avez une idée de site web,
+                            d'application ou de solution digitale ?
+                            Parlons-en.
+                        </p>
+
+
+                        <div class="mt-8 space-y-4">
+
+                            <!-- EMAIL -->
+
+                            <a
+                                href="mailto:danielbabo2307@gmail.com"
+                                class="glass-card flex items-center gap-4 rounded-2xl p-5"
+                            >
+
+                                <div
+                                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-cobalt/10"
+                                >
+
+                                    <span
+                                        class="material-symbols-outlined text-cobalt"
+                                    >
+                                        mail
+                                    </span>
+
+                                </div>
+
+
+                                <div>
+
+                                    <div
+                                        class="text-xs uppercase tracking-wider text-muted"
+                                    >
+                                        Email
+                                    </div>
+
+                                    <div
+                                        class="mt-1 font-medium text-high-text"
+                                    >
+                                        danielbabo2307@gmail.com
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+
+                            <!-- WHATSAPP -->
+
+                            <a
+                                href="https://wa.me/2250565138646?text=Bonjour%20Babo%20DDev%2C%20je%20souhaite%20discuter%20d%27un%20projet."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="glass-card flex items-center gap-4 rounded-2xl p-5"
+                            >
+
+                                <div
+                                    class="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan/10"
+                                >
+
+                                    <span
+                                        class="material-symbols-outlined text-cyan"
+                                    >
+                                        <i class="fa-brands fa-whatsapp text-[20px] text-cyan"></i>
+                                    </span>
+
+                                </div>
+
+
+                                <div>
+
+                                    <div
+                                        class="text-xs uppercase tracking-wider text-muted"
+                                    >
+                                        WhatsApp
+                                    </div>
+
+                                    <div
+                                        class="mt-1 font-medium text-high-text"
+                                    >
+                                        +225 05 65 13 86 46
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTACT FORM -->
+
+                    <div class="reveal-right lg:col-span-7">
+
+                        <form
+                            id="contact-form"
+                            class="glass-panel rounded-3xl p-6 sm:p-8"
+                        >
+
+                            <div
+                                class="grid gap-5 sm:grid-cols-2"
+                            >
+
+                                <!-- NOM -->
+
+                                <div>
+
+                                    <label
+                                        for="nom"
+                                        class="mb-2 block font-mono text-xs text-muted"
+                                    >
+                                        NOM
+                                    </label>
+
+                                    <input
+                                        id="nom"
+                                        name="nom"
+                                        type="text"
+                                        required
+                                        autocomplete="name"
+                                        placeholder="Votre nom"
+                                        class="animated-input w-full rounded-lg px-4 py-3 text-sm text-high-text placeholder:text-muted"
+                                    >
+
+                                </div>
+
+
+                                <!-- EMAIL -->
+
+                                <div>
+
+                                    <label
+                                        for="email"
+                                        class="mb-2 block font-mono text-xs text-muted"
+                                    >
+                                        EMAIL
+                                    </label>
+
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        required
+                                        autocomplete="email"
+                                        placeholder="vous@email.com"
+                                        class="animated-input w-full rounded-lg px-4 py-3 text-sm text-high-text placeholder:text-muted"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SUJET -->
+
+                            <div class="mt-5">
+
+                                <label
+                                    for="sujet"
+                                    class="mb-2 block font-mono text-xs text-muted"
+                                >
+                                    SUJET
+                                </label>
+
+                                <input
+                                    id="sujet"
+                                    name="sujet"
+                                    type="text"
+                                    required
+                                    placeholder="De quoi souhaitez-vous parler ?"
+                                    class="animated-input w-full rounded-lg px-4 py-3 text-sm text-high-text placeholder:text-muted"
+                                >
+
+                            </div>
+
+
+                            <!-- MESSAGE -->
+
+                            <div class="mt-5">
+
+                                <label
+                                    for="message"
+                                    class="mb-2 block font-mono text-xs text-muted"
+                                >
+                                    MESSAGE
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="6"
+                                    required
+                                    placeholder="Décrivez votre projet..."
+                                    class="animated-input w-full resize-none rounded-lg px-4 py-3 text-sm text-high-text placeholder:text-muted"
+                                ></textarea>
+
+                            </div>
+
+
+                            <!-- SUBMIT -->
+
+                            <div
+                                class="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+                            >
+
+                                <p
+                                    id="form-status"
+                                    class="text-sm text-secondary-text"
+                                    aria-live="polite"
+                                ></p>
+
+                            
+                                <button
+                                    type="submit"
+                                    id="submit-button"
+                                    class="glow-button ripple inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-cobalt px-6 py-3.5 font-semibold text-white"
+                                >
+
+                                   <i class="fa-brands fa-whatsapp text-[18px]"></i> Envoyer le message
+
+                                    <span
+                                        class="material-symbols-outlined text-[20px]"
+                                    >
+                                        send
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer
+        class="relative z-10 border-t border-outline-variant/40 bg-surface-base/70"
+    >
+
+        <div
+            class="mx-auto max-w-[1280px] px-5 py-12 sm:px-8 lg:px-12"
+        >
+
+            <div
+                class="grid gap-10 md:grid-cols-3"
+            >
+
+                <!-- BRAND -->
+
+                <div>
+
+                    <a
+                        href="#accueil"
+                        class="font-display text-xl font-bold text-high-text"
+                    > <div
+                    class="relative h-11 w-11 overflow-hidden rounded-xl border border-cobalt/30 bg-surface-container"
+                >
+
+                    <img
+                      src="./image-removebg-preview.png"  
+                      alt="Logo BABO DDev"
+                        class="h-full w-full object-cover"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+
+                    <div
+                        class="hidden h-full w-full items-center justify-center bg-gradient-to-br from-cobalt to-cyan font-display font-bold text-white"
+                    >
+                        
+                    </div>
+
+                </div>
+                        BABO <span class="text-light-cobalt">DDev</span>
+                    </a>
+
+
+                    <p
+                        class="mt-4 max-w-sm text-sm leading-6 text-secondary-text"
+                    >
+                        Développeur web basé à Abidjan,
+                        spécialisé dans la création de solutions web modernes.
+                    </p>
+
+
+                   <div 
+    class="mt-5 inline-flex items-center gap-2 rounded-full 
+           border border-green-500/20 bg-green-500/5 px-3 py-2 
+           font-mono text-xs text-green-400
+           animate-fade-in
+           transition-all duration-300
+           hover:border-green-400/50
+           hover:bg-green-500/10
+           hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]
+           hover:scale-105"
+>
+    <!-- Point animé -->
+    <span 
+        class="relative flex h-2 w-2"
+    >
+        <span 
+            class="absolute inline-flex h-full w-full 
+                   animate-ping rounded-full bg-green-400 opacity-75"
+        ></span>
+
+        <span 
+            class="relative inline-flex h-2 w-2 
+                   rounded-full bg-green-400
+                   shadow-[0_0_8px_rgba(74,222,128,0.8)]"
+        ></span>
+    </span>
+
+    <span class="animate-pulse">
+        Disponible pour nouveaux projets
+    </span>
+</div>
+                </div>
+
+
+                <!-- NAVIGATION -->
+
+                <div>
+
+                    <h3
+                        class="font-mono text-xs uppercase tracking-widest text-muted"
+                    >
+                        Navigation
+                    </h3>
+
+
+                    <nav
+                        class="mt-4 grid grid-cols-2 gap-3 text-sm"
+                    >
+
+                        <a
+                            href="#accueil"
+                            class="text-secondary-text transition hover:text-primary"
+                        >
+                            Accueil
+                        </a>
+
+                        <a
+                            href="#a-propos"
+                            class="text-secondary-text transition hover:text-primary"
+                        >
+                            À propos
+                        </a>
+
+                        <a
+                            href="#competences"
+                            class="text-secondary-text transition hover:text-primary"
+                        >
+                            Compétences
+                        </a>
+
+                        <a
+                            href="#projets"
+                            class="text-secondary-text transition hover:text-primary"
+                        >
+                            Projets
+                        </a>
+
+                        <a
+                            href="#formation"
+                            class="text-secondary-text transition hover:text-primary"
+                        >
+                            Formation
+                        </a>
+
+                        <a
+                            href="#contact"
+                            class="text-secondary-text transition hover:text-primary"
+                        >
+                            Contact
+                        </a>
+
+                    </nav>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div>
+
+                    <h3
+                        class="font-mono text-xs uppercase tracking-widest text-muted"
+                    >
+                        Connectivité
+                    </h3>
+
+
+                    <div
+                        class="mt-4 space-y-3 text-sm"
+                    >
+
+                        <a
+                            href="mailto:danielbabo2307@gmail.com"
+                            class="block text-secondary-text transition hover:text-primary"
+                        >
+                            danielbabo2307@gmail.com
+                        </a>
+
+
+                        <a
+                            href="https://wa.me/2250565138646"  
+                            target="_blank"  
+                            rel="noopener noreferrer"  
+                            class="block text-secondary-text transition hover:text-cyan"  
+                        >  
+                            WhatsApp : +225 05 65 13 86 46  
+                        </a>  
+  
+  
+                        <div class="font-mono text-xs text-muted">  
+                            GMT+0 · Abidjan  
+                        </div>  
+  
+                    </div>  
+  
+                </div>  
+  
+            </div>  
+  
+  
+            <div  
+                class="my-8 h-px bg-gradient-to-r from-transparent via-cobalt/20 to-transparent"  
+            ></div>  
+  
+  
+            <div  
+                class="flex flex-col gap-3 text-xs text-muted sm:flex-row sm:items-center sm:justify-between"  
+            >  
+  
+                <p>  
+                    © 2026 BABO DDev. Tous droits réservés.  
+                </p>  
+  
+  
+                <p class="font-mono">  
+                    Conçu & développé à Abidjan  
+                </p>  
+  
+            </div>  
+  
+        </div>  
+  
+    </footer>  
+  
+  
+    <!-- =========================================================  
+         BACK TO TOP  
+    ========================================================== -->  
+  
+    <button  
+        id="back-to-top"  
+        type="button"  
+        aria-label="Retour en haut"  
+    >  
+  
+        <span class="material-symbols-outlined">  
+            keyboard_arrow_up  
+        </span>  
+  
+    </button>  
+  
+  
+    <!-- =========================================================  
+         JAVASCRIPT  
+    ========================================================== -->  
+  
+    <script>  
+  
+        document.addEventListener(  
+            "DOMContentLoaded",  
+            () => {  
+  
+                const reducedMotion =  
+                    window.matchMedia(  
+                        "(prefers-reduced-motion: reduce)"  
+                    ).matches;  
+  
+  
+                /* =================================================  
+                   MOBILE MENU  
+                ================================================== */  
+  
+                const menuButton =  
+                    document.getElementById(  
+                        "menu-button"  
+                    );  
+  
+                const mobileMenu =  
+                    document.getElementById(  
+                        "mobile-menu"  
+                    );  
+  
+                const menuIcon =  
+                    document.getElementById(  
+                        "menu-icon"  
+                    );  
+  
+  
+                function setMenu(open) {  
+  
+                    if (!mobileMenu) return;  
+  
+  
+                    mobileMenu.classList.toggle(  
+                        "menu-open",  
+                        open  
+                    );  
+  
+  
+                    menuButton?.setAttribute(  
+                        "aria-expanded",  
+                        String(open)  
+                    );  
+  
+  
+                    if (menuIcon) {  
+  
+                        menuIcon.textContent =  
+                            open  
+                                ? "close"  
+                                : "menu";  
+                    }  
+  
+                }  
+  
+  
+                menuButton?.addEventListener(  
+                    "click",  
+                    () => {  
+  
+                        const isOpen =  
+                            mobileMenu.classList.contains(  
+                                "menu-open"  
+                            );  
+  
+                        setMenu(!isOpen);  
+  
+                    }  
+                );  
+  
+  
+                document  
+                    .querySelectorAll(  
+                        "#mobile-menu a"  
+                    )  
+                    .forEach(  
+                        link => {  
+  
+                            link.addEventListener(  
+                                "click",  
+                                () => setMenu(false)  
+                            );  
+  
+                        }  
+                    );  
+  
+  
+                /* =================================================  
+                   SMOOTH SCROLL  
+                ================================================== */  
+  
+                document  
+                    .querySelectorAll(  
+                        'a[href^="#"]'  
+                    )  
+                    .forEach(  
+                        link => {  
+  
+                            link.addEventListener(  
+                                "click",  
+                                event => {  
+  
+                                    const targetId =  
+                                        link.getAttribute(  
+                                            "href"  
+                                        );  
+  
+                                    if (  
+                                        !targetId ||  
+                                        targetId === "#"  
+                                    ) {  
+                                        return;  
+                                    }  
+  
+  
+                                    const target =  
+                                        document.querySelector(  
+                                            targetId  
+                                        );  
+  
+                                    if (!target) {  
+                                        return;  
+                                    }  
+  
+  
+                                    event.preventDefault();  
+  
+  
+                                    const headerHeight =  
+                                        document  
+                                            .querySelector(  
+                                                "header"  
+                                            )  
+                                            ?.offsetHeight || 80;  
+  
+  
+                                    const position =  
+                                        target.getBoundingClientRect()  
+                                            .top  
+                                        +  
+                                        window.scrollY  
+                                        -  
+                                        headerHeight  
+                                        +  
+                                        1;  
+  
+  
+                                    window.scrollTo({  
+                                        top: position,  
+                                        behavior:  
+                                            reducedMotion  
+                                                ? "auto"  
+                                                : "smooth"  
+                                    });  
+  
+                                }  
+                            );  
+  
+                        }  
+                    );  
+  
+  
+                /* =================================================  
+                   ACTIVE NAVIGATION (clic uniquement)  
+                ================================================== */  
+  
+                const navLinks =  
+                    document.querySelectorAll(  
+                        "header nav a[data-path]"  
+                    );  
+  
+                const mobileNavLinks =  
+                    document.querySelectorAll(  
+                        "#mobile-menu a[href^='#']"  
+                    );  
+  
+  
+                function activateNav(id) {  
+  
+                    navLinks.forEach(  
+                        link => {  
+  
+                            const active =  
+                                link.dataset.path === id;  
+  
+                            link.classList.toggle(  
+                                "active",  
+                                active  
+                            );  
+  
+                        }  
+                    );  
+  
+                }  
+  
+  
+                // Aucun lien actif au chargement — uniquement après un clic  
+  
+                function handleNavClick(event) {  
+  
+                    const href =  
+                        event.currentTarget.getAttribute(  
+                            "href"  
+                        );  
+  
+                    if (  
+                        !href ||  
+                        !href.startsWith("#") ||  
+                        href === "#"  
+                    ) {  
+                        return;  
+                    }  
+  
+                    const id = href.slice(1);  
+  
+                    activateNav(id);  
+  
+                }  
+  
+  
+                navLinks.forEach(  
+                    link => {  
+  
+                        link.addEventListener(  
+                            "click",  
+                            handleNavClick  
+                        );  
+  
+                    }  
+                );  
+  
+  
+                mobileNavLinks.forEach(  
+                    link => {  
+  
+                        link.addEventListener(  
+                            "click",  
+                            () => {  
+  
+                                const href =  
+                                    link.getAttribute(  
+                                        "href"  
+                                    );  
+  
+                                if (  
+                                    href &&  
+                                    href.startsWith("#")  
+                                ) {  
+  
+                                    activateNav(  
+                                        href.slice(1)  
+                                    );  
+  
+                                }  
+  
+                            }  
+                        );  
+  
+                    }  
+                );  
+  
+  
+                /* =================================================  
+                   REVEAL  
+                ================================================== */  
+  
+                const revealElements =  
+                    document.querySelectorAll(  
+                        ".reveal, .reveal-left, .reveal-right, .reveal-scale"  
+                    );  
+  
+  
+                if (  
+                    reducedMotion ||  
+                    !("IntersectionObserver" in window)  
+                ) {  
+  
+                    revealElements.forEach(  
+                        element =>  
+                            element.classList.add(  
+                                "is-visible"  
+                            )  
+                    );  
+  
+                } else {  
+  
+                    const revealObserver =  
+                        new IntersectionObserver(  
+                            entries => {  
+  
+                                entries.forEach(  
+                                    entry => {  
+  
+                                        if (  
+                                            entry.isIntersecting  
+                                        ) {  
+  
+                                            const delay =  
+                                                entry.target.dataset.delay ||  
+                                                0;  
+  
+  
+                                            setTimeout(  
+                                                () => {  
+  
+                                                    entry.target.classList.add(  
+                                                        "is-visible"  
+                                                    );  
+  
+                                                },  
+                                                Number(delay)  
+                                            );  
+  
+  
+                                            revealObserver.unobserve(  
+                                                entry.target  
+                                            );  
+  
+                                        }  
+  
+                                    }  
+                                );  
+  
+                            },  
+                            {  
+                                threshold: 0.12,  
+                                rootMargin:  
+                                    "0px 0px -40px 0px"  
+                            }  
+                        );  
+  
+  
+                    revealElements.forEach(  
+                        element =>  
+                            revealObserver.observe(  
+                                element  
+                            )  
+                    );  
+  
+                }  
+  
+  
+                /* =================================================  
+                   COUNTERS  
+                ================================================== */  
+  
+                const counters =  
+                    document.querySelectorAll(  
+                        "[data-counter]"  
+                    );  
+  
+  
+                function setFinalCounter(  
+                    element  
+                ) {  
+  
+                    const target =  
+                        Number(  
+                            element.dataset.target  
+                        );  
+  
+                    const suffix =  
+                        element.dataset.suffix || "";  
+  
+  
+                    element.textContent =  
+                        target + suffix;  
+                }  
+  
+  
+                function animateCounter(  
+                    element  
+                ) {  
+  
+                    if (reducedMotion) {  
+  
+                        setFinalCounter(element);  
+  
+                        return;  
+                    }  
+  
+  
+                    const target =  
+                        Number(  
+                            element.dataset.target  
+                        );  
+  
+                    const suffix =  
+                        element.dataset.suffix || "";  
+  
+  
+                    const duration = 1200;  
+  
+                    const startTime =  
+                        performance.now();  
+  
+  
+                    function frame(now) {  
+  
+                        const progress =  
+                            Math.min(  
+                                (  
+                                    now -  
+                                    startTime  
+                                ) /  
+                                duration,  
+                                1  
+                            );  
+  
+  
+                        const eased =  
+                            1 -  
+                            Math.pow(  
+                                1 - progress,  
+                                3  
+                            );  
+  
+  
+                        const current =  
+                            Math.round(  
+                                target *  
+                                eased  
+                            );  
+  
+  
+                        element.textContent =  
+                            current +  
+                            suffix;  
+  
+  
+                        if (  
+                            progress < 1  
+                        ) {  
+  
+                            requestAnimationFrame(  
+                                frame  
+                            );  
+  
+                        }  
+  
+                    }  
+  
+  
+                    requestAnimationFrame(  
+                        frame  
+                    );  
+  
+                }  
+  
+  
+                if (  
+                    "IntersectionObserver" in window  
+                ) {  
+  
+                    const counterObserver =  
+                        new IntersectionObserver(  
+                            entries => {  
+  
+                                entries.forEach(  
+                                    entry => {  
+  
+                                        if (  
+                                            entry.isIntersecting  
+                                        ) {  
+  
+                                            animateCounter(  
+                                                entry.target  
+                                            );  
+  
+                                            counterObserver.unobserve(  
+                                                entry.target  
+                                            );  
+  
+                                        }  
+  
+                                    }  
+                                );  
+  
+                            },  
+                            {  
+                                threshold: 0.7  
+                            }  
+                        );  
+  
+  
+                    counters.forEach(  
+                        counter =>  
+                            counterObserver.observe(  
+                                counter  
+                            )  
+                    );  
+  
+                } else {  
+  
+                    counters.forEach(  
+                        setFinalCounter  
+                    );  
+  
+                }  
+  
+  
+                /* =================================================  
+                   TYPEWRITER  
+                ================================================== */  
+  
+                const typewriter =  
+                    document.getElementById(  
+                        "typewriter"  
+                    );  
+  
+  
+                if (  
+                    typewriter &&  
+                    !reducedMotion  
+                ) {  
+  
+                    const phrases = [  
+  
+                        "React + Node.js",  
+  
+                        "Interfaces modernes",  
+  
+                        "APIs & bases de données",  
+  
+                        "Solutions web à Abidjan"  
+  
+                    ];  
+  
+  
+                    let phraseIndex = 0;  
+  
+                    let charIndex = 0;  
+  
+                    let deleting = false;  
+  
+  
+                    function typeEffect() {  
+  
+                        const phrase =  
+                            phrases[  
+                                phraseIndex  
+                            ];  
+  
+  
+                        if (!deleting) {  
+  
+                            charIndex++;  
+  
+                        } else {  
+  
+                            charIndex--;  
+  
+                        }  
+  
+  
+                        typewriter.textContent =  
+                            phrase.substring(  
+                                0,  
+                                charIndex  
+                            );  
+  
+  
+                        let speed =  
+                            deleting  
+                                ? 45  
+                                : 80;  
+  
+  
+                        if (  
+                            !deleting &&  
+                            charIndex === phrase.length  
+                        ) {  
+  
+                            speed = 1600;  
+  
+                            deleting = true;  
+  
+                        }  
+  
+  
+                        if (  
+                            deleting &&  
+                            charIndex === 0  
+                        ) {  
+  
+                            deleting = false;  
+  
+                            phraseIndex =  
+                                (  
+                                    phraseIndex + 1  
+                                ) %  
+                                phrases.length;  
+  
+                            speed = 450;  
+  
+                        }  
+  
+  
+                        setTimeout(  
+                            typeEffect,  
+                            speed  
+                        );  
+  
+                    }  
+  
+  
+                    setTimeout(  
+                        typeEffect,  
+                        900  
+                    );  
+  
+                }  
+  
+  
+                /* =================================================  
+                   CURSOR GLOW  
+                ================================================== */  
+  
+                const cursorGlow =  
+                    document.getElementById(  
+                        "cursor-glow"  
+                    );  
+  
+  
+                const finePointer =  
+                    window.matchMedia(  
+                        "(pointer: fine)"  
+                    ).matches;  
+  
+  
+                if (  
+                    cursorGlow &&  
+                    finePointer &&  
+                    !reducedMotion  
+                ) {  
+  
+                    document.addEventListener(  
+                        "mousemove",  
+                        event => {  
+  
+                            cursorGlow.style.left =  
+                                event.clientX +  
+                                "px";  
+  
+                            cursorGlow.style.top =  
+                                event.clientY +  
+                                "px";  
+  
+                            cursorGlow.style.opacity =  
+                                "1";  
+  
+                        }  
+                    );  
+  
+  
+                    document.addEventListener(  
+                        "mouseleave",  
+                        () => {  
+  
+                            cursorGlow.style.opacity =  
+                                "0";  
+  
+                        }  
+                    );  
+  
+                }  
+  
+  
+                /* =================================================  
+                   3D CARD TILT  
+                ================================================== */  
+  
+                if (  
+                    finePointer &&  
+                    !reducedMotion  
+                ) {  
+  
+                    document  
+                        .querySelectorAll(  
+                            "[data-tilt]"  
+                        )  
+                        .forEach(  
+                            card => {  
+  
+                                card.addEventListener(  
+                                    "mousemove",  
+                                    event => {  
+  
+                                        const rect =  
+                                            card.getBoundingClientRect();  
+  
+  
+                                        const x =  
+                                            event.clientX -  
+                                            rect.left;  
+  
+  
+                                        const y =  
+                                            event.clientY -  
+                                            rect.top;  
+  
+  
+                                        const centerX =  
+                                            rect.width /  
+                                            2;  
+  
+  
+                                        const centerY =  
+                                            rect.height /  
+                                            2;  
+  
+  
+                                        const rotateX =  
+                                            (  
+                                                y -  
+                                                centerY  
+                                            ) /  
+                                            centerY *  
+                                            -2.5;  
+  
+  
+                                        const rotateY =  
+                                            (  
+                                                x -  
+                                                centerX  
+                                            ) /  
+                                            centerX *  
+                                            2.5;  
+  
+  
+                                        card.style.transform =  
+                                            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;  
+  
+                                    }  
+                                );  
+  
+  
+                                card.addEventListener(  
+                                    "mouseleave",  
+                                    () => {  
+  
+                                        card.style.transform =  
+                                            "";  
+  
+                                    }  
+                                );  
+  
+                            }  
+                        );  
+  
+                }  
+  
+  
+                /* =================================================  
+                   RIPPLE EFFECT  
+                ================================================== */  
+  
+                document  
+                    .querySelectorAll(  
+                        ".ripple"  
+                    )  
+                    .forEach(  
+                        button => {  
+  
+                            button.addEventListener(  
+                                "click",  
+                                event => {  
+  
+                                    if (  
+                                        reducedMotion  
+                                    ) {  
+                                        return;  
+                                    }  
+  
+  
+                                    const rect =  
+                                        button.getBoundingClientRect();  
+  
+  
+                                    const size =  
+                                        Math.max(  
+                                            rect.width,  
+                                            rect.height  
+                                        );  
+  
+  
+                                    const ripple =  
+                                        document.createElement(  
+                                            "span"  
+                                        );  
+  
+  
+                                    ripple.className =  
+                                        "ripple-wave";  
+  
+  
+                                    ripple.style.width =  
+                                        size + "px";  
+  
+                                    ripple.style.height =  
+                                        size + "px";  
+  
+  
+                                    ripple.style.left =  
+                                        (  
+                                            event.clientX -  
+                                            rect.left -  
+                                            size / 2  
+                                        ) +  
+                                        "px";  
+  
+  
+                                    ripple.style.top =  
+                                        (  
+                                            event.clientY -  
+                                            rect.top -  
+                                            size / 2  
+                                        ) +  
+                                        "px";  
+  
+  
+                                    button.appendChild(  
+                                        ripple  
+                                    );  
+  
+  
+                                    setTimeout(  
+                                        () => {  
+                                            ripple.remove();  
+                                        },  
+                                        650  
+                                    );  
+  
+                                }  
+                            );  
+  
+                        }  
+                    );  
+  
+  
+                /* =================================================  
+                   SCROLL PROGRESS  
+                ================================================== */  
+  
+                const progressBar =  
+                    document.getElementById(  
+                        "scroll-progress"  
+                    );  
+  
+  
+                function updateScrollProgress() {  
+  
+                    const scrollTop =  
+                        window.scrollY;  
+  
+                    const documentHeight =  
+                        document.documentElement  
+                            .scrollHeight;  
+  
+                    const windowHeight =  
+                        window.innerHeight;  
+  
+  
+                    const total =  
+                        documentHeight -  
+                        windowHeight;  
+  
+  
+                    const progress =  
+                        total > 0  
+                            ? (  
+                                scrollTop /  
+                                total  
+                            ) *  
+                            100  
+                            : 0;  
+  
+  
+                    if (progressBar) {  
+  
+                        progressBar.style.width =  
+                            progress +  
+                            "%";  
+                    }  
+  
+                }  
+  
+  
+                window.addEventListener(  
+                    "scroll",  
+                    updateScrollProgress,  
+                    {  
+                        passive: true  
+                    }  
+                );  
+  
+  
+                updateScrollProgress();  
+  
+  
+                /* =================================================  
+                   BACK TO TOP  
+                ================================================== */  
+  
+                const backToTop =  
+                    document.getElementById(  
+                        "back-to-top"  
+                    );  
+  
+  
+                function updateBackToTop() {  
+  
+                    if (!backToTop) {  
+                        return;  
+                    }  
+  
+  
+                    backToTop.classList.toggle(  
+                        "visible",  
+                        window.scrollY > 600  
+                    );  
+  
+                }  
+  
+  
+                window.addEventListener(  
+                    "scroll",  
+                    updateBackToTop,  
+                    {  
+                        passive: true  
+                    }  
+                );  
+  
+  
+                backToTop?.addEventListener(  
+                    "click",  
+                    () => {  
+  
+                        window.scrollTo({  
+                            top: 0,  
+                            behavior:  
+                                reducedMotion  
+                                    ? "auto"  
+                                    : "smooth"  
+                        });  
+  
+                    }  
+                );  
+  
+  
+                /* =================================================  
+                   CONTACT FORM  
+                ================================================== */  
+  
+                const contactForm =  
+                    document.getElementById(  
+                        "contact-form"  
+                    );  
+  
+                const formStatus =  
+                    document.getElementById(  
+                        "form-status"  
+                    );  
+  
+                const submitButton =  
+                    document.getElementById(  
+                        "submit-button"  
+                    );  
+  
+  
+                contactForm?.addEventListener(  
+                    "submit",  
+                    event => {  
+  
+                        event.preventDefault();  
+  
+  
+                        const formData =  
+                            new FormData(  
+                                contactForm  
+                            );  
+  
+  
+                        const nom =  
+                            String(  
+                                formData.get(  
+                                    "nom"  
+                                ) || ""  
+                            ).trim();  
+  
+  
+                        const email =  
+                            String(  
+                                formData.get(  
+                                    "email"  
+                                ) || ""  
+                            ).trim();  
+  
+  
+                        const sujet =  
+                            String(  
+                                formData.get(  
+                                    "sujet"  
+                                ) || ""  
+                            ).trim();  
+  
+  
+                        const message =  
+                            String(  
+                                formData.get(  
+                                    "message"  
+                                ) || ""  
+                            ).trim();  
+  
+  
+                        if (  
+                            !nom ||  
+                            !email ||  
+                            !sujet ||  
+                            !message  
+                        ) {  
+  
+                            formStatus.textContent =  
+                                "Veuillez remplir tous les champs.";  
+  
+                            formStatus.className =  
+                                "text-sm text-error";  
+  
+                            return;  
+  
+                        }  
+  
+  
+                        const subject =  
+                            encodeURIComponent(  
+                                sujet  
+                            );  
+  
+  
+                        const body =  
+                            encodeURIComponent(  
+                                `Bonjour Babo DDev,  
+  
+Nom : ${nom}  
+Email : ${email}  
+  
+Message :  
+${message}`  
+                            );  
+  
+  
+                        formStatus.textContent =  
+                            "Préparation de votre message...";  
+  
+  
+                        formStatus.className =  
+                            "text-sm text-cyan";  
+  
+  
+                        if (submitButton) {  
+  
+                            submitButton.disabled =  
+                                true;  
+  
+                            submitButton.style.opacity =  
+                                "0.7";  
+  
+                        }  
+  
+  
+                       setTimeout(
+    () => {
+
+        const whatsappNumber = "2250565138646";
+
+        const whatsappMessage = `
+Bonjour Babo DDev 
+
+Je souhaite discuter d'un projet avec vous.
+
+Nom : ${nom}
+
+ Email : ${email}
+
+ Sujet :
+${sujet}
+
+ Message :
+${message}
+
+Merci.
+        `.trim();
+
+        const whatsappURL =
+            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+
+        if (submitButton) {
+
+            submitButton.disabled =
+                false;
+
+            submitButton.style.opacity =
+                "1";
+
+        }
+
+        formStatus.textContent =
+            "Message préparé sur WhatsApp.";
+
+        formStatus.className =
+            "text-sm text-green-400";
+
+    },
+    500
+);
+                    }  
+                );  
+  
+  
+                /* =================================================  
+                   ESCAPE = CLOSE MOBILE MENU  
+                ================================================== */  
+  
+                document.addEventListener(  
+                    "keydown",  
+                    event => {  
+  
+                        if (  
+                            event.key ===  
+                            "Escape"  
+                        ) {  
+  
+                            setMenu(false);  
+  
+                        }  
+  
+                    }  
+                );  
+  
+            }  
+  
+        );  
+  
+    </script>  
+  
+</body>  
+</html>
